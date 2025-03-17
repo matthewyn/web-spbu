@@ -1,0 +1,716 @@
+[
+  {
+    "name": "SPBU 31.402.01",
+    "latitude": -6940982,
+    "longitude": 107642006,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 31.402.02",
+    "latitude": -6918680,
+    "longitude": 107584080,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 31.406.01",
+    "latitude": -6937475,
+    "longitude": 107693889,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.401.02",
+    "latitude": -6904444,
+    "longitude": 107606962,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.06",
+    "latitude": -6902698,
+    "longitude": 107564525,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.10",
+    "latitude": -6913368,
+    "longitude": 107633962,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.11",
+    "latitude": -6887637,
+    "longitude": 107602049,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.15",
+    "latitude": -6907097,
+    "longitude": 107585951,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.16",
+    "latitude": -6893576,
+    "longitude": 107586096,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.401.20",
+    "latitude": -6882514,
+    "longitude": 107581359,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.21",
+    "latitude": -6888559,
+    "longitude": 107603943,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.22",
+    "latitude": -6868864,
+    "longitude": 107620895,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.401.24",
+    "latitude": -6880629,
+    "longitude": 107598836,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.25",
+    "latitude": -6890540,
+    "longitude": 107616726,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.26",
+    "latitude": -6912769,
+    "longitude": 107574562,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.27",
+    "latitude": -6919905,
+    "longitude": 107612086,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.28",
+    "latitude": -6899354,
+    "longitude": 107627230,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.29",
+    "latitude": -6915064,
+    "longitude": 107586530,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.30",
+    "latitude": -6916534,
+    "longitude": 107618379,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.401.31",
+    "latitude": -6909696,
+    "longitude": 107578188,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.32",
+    "latitude": -6875122,
+    "longitude": 107596717,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.33",
+    "latitude": -6905703,
+    "longitude": 107618623,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.401.34",
+    "latitude": -6898248,
+    "longitude": 107597231,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.401.35",
+    "latitude": -6889022,
+    "longitude": 107581598,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.402.01",
+    "latitude": -6939632,
+    "longitude": 107662486,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.02",
+    "latitude": -6947889,
+    "longitude": 107635337,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.03",
+    "latitude": -6929639,
+    "longitude": 107577684,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.04",
+    "latitude": -6934768,
+    "longitude": 107591492,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.06",
+    "latitude": -6938240,
+    "longitude": 107616790,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.07",
+    "latitude": -6948091,
+    "longitude": 107607425,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.09",
+    "latitude": -6936721,
+    "longitude": 107691532,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.10",
+    "latitude": -6941254,
+    "longitude": 107582239,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.11",
+    "latitude": -6956041,
+    "longitude": 107655382,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.12",
+    "latitude": -6960642,
+    "longitude": 107638758,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.14",
+    "latitude": -6950436,
+    "longitude": 107586801,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.17",
+    "latitude": -6937790,
+    "longitude": 107617820,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.18",
+    "latitude": -6933020,
+    "longitude": 107628000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.20",
+    "latitude": -6913307,
+    "longitude": 107651568,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.21",
+    "latitude": -6959454,
+    "longitude": 107593375,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.22",
+    "latitude": -69828728036969,
+    "longitude": 10762086380894900,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.23",
+    "latitude": -6974987,
+    "longitude": 107571370,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.25",
+    "latitude": -6943112,
+    "longitude": 107650352,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.26",
+    "latitude": -6940290,
+    "longitude": 107677382,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.27",
+    "latitude": -6929176,
+    "longitude": 107579750,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.402.28",
+    "latitude": -6925662,
+    "longitude": 107631725,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.30",
+    "latitude": -6922275,
+    "longitude": 107630610,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.402.31",
+    "latitude": -6891010,
+    "longitude": 107625630,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.32",
+    "latitude": -6966946,
+    "longitude": 107681319,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.33",
+    "latitude": -6927381,
+    "longitude": 107567492,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.34",
+    "latitude": -6913509,
+    "longitude": 107658971,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.35",
+    "latitude": -6960071,
+    "longitude": 107663261,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.36",
+    "latitude": -6923334,
+    "longitude": 107628056,
+    "type": "Pasti Prima"
+  },
+  {
+    "name": "SPBU 34.402.37",
+    "latitude": -6919351,
+    "longitude": 107574551,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.38",
+    "latitude": -6952447,
+    "longitude": 107637964,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.39",
+    "latitude": -6954800,
+    "longitude": 107611861,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.40",
+    "latitude": -6963656,
+    "longitude": 107614194,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.41",
+    "latitude": -6963965,
+    "longitude": 107677462,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.42",
+    "latitude": -6940103,
+    "longitude": 107593005,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.43",
+    "latitude": -6968294,
+    "longitude": 107591154,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.44",
+    "latitude": -6904072,
+    "longitude": 107665151,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.46",
+    "latitude": -6974806,
+    "longitude": 107590366,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.47",
+    "latitude": -6917615,
+    "longitude": 107644337,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.48",
+    "latitude": -6926622,
+    "longitude": 107575202,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.402.49",
+    "latitude": -6911783313845600,
+    "longitude": 1076368815090320,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.50",
+    "latitude": -6944974,
+    "longitude": 107688666,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.51",
+    "latitude": -6970205,
+    "longitude": 107574315,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.52",
+    "latitude": -6965663,
+    "longitude": 107576118,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.53",
+    "latitude": -6949187,
+    "longitude": 107625825,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.54",
+    "latitude": -693649149532248,
+    "longitude": 10761045232413400,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.55",
+    "latitude": -6925692,
+    "longitude": 107591936,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.402.56",
+    "latitude": -6935092,
+    "longitude": 107592614,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.57",
+    "latitude": -6942880,
+    "longitude": 107642298,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.58",
+    "latitude": -6949064,
+    "longitude": 107566756,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.402.59",
+    "latitude": -6914103,
+    "longitude": 107570901,
+    "type": "Green Energy Station"
+  },
+  {
+    "name": "SPBU 34.402.61",
+    "latitude": -6970793553805790,
+    "longitude": 10763646438658500,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.01",
+    "latitude": -7015688,
+    "longitude": 107878738,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.02",
+    "latitude": -6938692175734400,
+    "longitude": 10773452485544200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.03",
+    "latitude": -6954405085908700,
+    "longitude": 10776861499733600,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.04",
+    "latitude": -7035988839109490,
+    "longitude": 1077162436793010,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.05",
+    "latitude": -70192147065810400,
+    "longitude": 10765426294188100,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.07",
+    "latitude": -6991909764476900,
+    "longitude": 10762576496968100,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.09",
+    "latitude": -70458212222366096,
+    "longitude": 10773594896115000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.10",
+    "latitude": -6932756303484380,
+    "longitude": 10772613443050700,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.12",
+    "latitude": -70140178576399904,
+    "longitude": 10780288818953000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.13",
+    "latitude": -6994786330103750,
+    "longitude": 10763036906661000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.18",
+    "latitude": -6806135487119470,
+    "longitude": 10759617608249200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.19",
+    "latitude": -6994895744614680,
+    "longitude": 1078535580897510,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.21",
+    "latitude": -68116096420868304,
+    "longitude": 10763482013273800,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.22",
+    "latitude": -7031685363962180,
+    "longitude": 10775155125568200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.24",
+    "latitude": -7076423062477800,
+    "longitude": 10748710283243600,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.25",
+    "latitude": -7029072381355740,
+    "longitude": 10769715004021900,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.27",
+    "latitude": -7109650123232970,
+    "longitude": 10755709863434500,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.28",
+    "latitude": -7085393327429050,
+    "longitude": 1077072886037960,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.29",
+    "latitude": -6994843337686600,
+    "longitude": 10785262135577300,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.30",
+    "latitude": -7032634132404650,
+    "longitude": 1077823421612320,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.31",
+    "latitude": -7007767522284470,
+    "longitude": 10786709996532600,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.32",
+    "latitude": -7035784569136860,
+    "longitude": 10792670605497100,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.33",
+    "latitude": -6998131485087740,
+    "longitude": 10774832264759700,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.34",
+    "latitude": -6966771043238650,
+    "longitude": 10782194991875500,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.35",
+    "latitude": -6960487823750000,
+    "longitude": 10778716373137100,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.36",
+    "latitude": -69960868769812800,
+    "longitude": 1075990169367550,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.37",
+    "latitude": -7057037103481740,
+    "longitude": 10756932965103500,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.403.38",
+    "latitude": -70466692834923000,
+    "longitude": 10758166742863000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.03",
+    "latitude": -6844230044918700,
+    "longitude": 1074871253777760,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.04",
+    "latitude": -6742168996456400,
+    "longitude": 10744155286354700,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.07",
+    "latitude": -68686132463591200,
+    "longitude": 10752151985153900,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.08",
+    "latitude": -6839912216517520,
+    "longitude": 10747809026756200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.13",
+    "latitude": -6855523745755780,
+    "longitude": 1074981110511080,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.14",
+    "latitude": -682806627055585,
+    "longitude": 10737609516408700,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.16",
+    "latitude": -6904310262257170,
+    "longitude": 10751763478783600,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.405.23",
+    "latitude": -6834514831785280,
+    "longitude": 10741309704839300,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.406.01",
+    "latitude": -6925998308131650,
+    "longitude": 10771072916563000,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.406.02",
+    "latitude": -6935761480226280,
+    "longitude": 10771447972522200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.406.03",
+    "latitude": -6936147879304690,
+    "longitude": 10770055817293200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.406.04",
+    "latitude": -6913871720221430,
+    "longitude": 10769506845010700,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.406.05",
+    "latitude": -6928979279373670,
+    "longitude": 10771197269612100,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.409.01",
+    "latitude": -70039542721025400,
+    "longitude": 107551995023168,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.409.03",
+    "latitude": -7009939809418040,
+    "longitude": 10755072645715200,
+    "type": "Pasti Pas"
+  },
+  {
+    "name": "SPBU 34.409.04",
+    "latitude": -7024436966920430,
+    "longitude": 10753006239206200,
+    "type": "Pasti Pas"
+  }
+]

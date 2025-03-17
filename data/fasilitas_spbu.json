@@ -1,0 +1,39 @@
+{
+  "SPBU": {
+    "Pasti Pas": {
+      "fasilitas": {
+        "toilet_umum": true,
+        "tempat_ibadah": true,
+        "isi_angin": true,
+        "minimarket": false
+      }
+    },
+    "Pasti Prima": {
+      "fasilitas": {
+        "toilet_umum": true,
+        "tempat_ibadah": true,
+        "isi_angin": true,
+        "minimarket": true,
+        "kafe_restoran": true,
+        "ATM": true,
+        "bengkel": true,
+        "cuci_kendaraan": true,
+        "nitrogen": true,
+        "penjualan_produk_pertamina": true
+      }
+    },
+    "Green Energy Station": {
+      "fasilitas": {
+        "toilet_umum": false,
+        "tempat_ibadah": false,
+        "isi_angin": false,
+        "minimarket": false,
+        "SPKLU": true,
+        "SPBKLU": true,
+        "PLTS": true,
+        "edukasi_produk_hijau": true,
+        "pembayaran_non_tunai": true
+      }
+    }
+  }
+}
