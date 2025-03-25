@@ -25,6 +25,8 @@ const PetaSebaranSPBU = () => {
   const [selectedRating, setSelectedRating] = useState(0);
   const [review, setReview] = useState("");
   const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+  const [numberOfReviews, setNumberOfReviews] = useState(0);
 
   const facilityOptions = [
     { value: "toilet_umum", label: "Toilet Umum" },
@@ -43,6 +45,8 @@ const PetaSebaranSPBU = () => {
     { value: "PLTS", label: "PLTS" },
     { value: "penjualan_produk_pertamina", label: "Penjualan Produk Pertamina" },
   ];
+
+  console.log(averageRating);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -123,8 +127,12 @@ const PetaSebaranSPBU = () => {
   useEffect(() => {
     if (selectedSPBU) {
       fetchReviews(selectedSPBU._id);
+      const initialAverageRating = reviews.length > 0 ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length : 0;
+      const initialNumberOfReviews = reviews.length;
+      setAverageRating(initialAverageRating);
+      setNumberOfReviews(initialNumberOfReviews);
     }
-  }, [selectedSPBU]);
+  }, [selectedSPBU, reviews]);
 
   const getBadgeColor = (type) => {
     switch (type) {
@@ -198,7 +206,19 @@ const PetaSebaranSPBU = () => {
         }
       );
       console.log("Rating submitted:", response.data);
-      // Switch to the "Deskripsi" and "Ulasan" view and open the "Ulasan" tab
+
+      // Fetch the updated reviews
+      await fetchReviews(selectedSPBU._id);
+
+      // Recalculate the average rating and total rating
+      const updatedReviews = await axios.get(`/api/ratings/${selectedSPBU._id}`);
+      setReviews(updatedReviews.data);
+      const updatedAverageRating = updatedReviews.data.length > 0 ? updatedReviews.data.reduce((sum, review) => sum + review.rating, 0) / updatedReviews.data.length : 0;
+      const updatedNumberOfReviews = updatedReviews.data.length;
+      setAverageRating(updatedAverageRating);
+      setNumberOfReviews(updatedNumberOfReviews);
+
+      // Switch to the "Ulasan" tab
       setShowTabs(true);
       setActiveTab("dashboard");
     } catch (err) {
@@ -213,6 +233,58 @@ const PetaSebaranSPBU = () => {
     } catch (err) {
       console.error("Error fetching reviews:", err);
     }
+  };
+
+  const formatDate = (date) => {
+    const now = new Date();
+    const createdAt = new Date(date);
+    const diffInSeconds = Math.floor((now - createdAt) / 1000);
+
+    const intervals = [
+      { label: "year", seconds: 31536000 },
+      { label: "month", seconds: 2592000 },
+      { label: "week", seconds: 604800 },
+      { label: "day", seconds: 86400 },
+      { label: "hour", seconds: 3600 },
+      { label: "minute", seconds: 60 },
+      { label: "second", seconds: 1 },
+    ];
+
+    for (const interval of intervals) {
+      const count = Math.floor(diffInSeconds / interval.seconds);
+      if (count > 0) {
+        return `${count} ${interval.label}${count !== 1 ? "s" : ""} ago`;
+      }
+    }
+
+    return "just now";
+  };
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.25 && rating % 1 < 0.75 ? 1 : 0;
+    const emptyStars = 5 - fullStars - halfStar;
+
+    return (
+      <>
+        {[...Array(fullStars)].map((_, i) => (
+          <svg key={`full-${i}`} className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0l2.948 5.955 6.564.955-4.756 4.635 1.122 6.545z" />
+          </svg>
+        ))}
+        {halfStar === 1 && (
+          <svg key="half" className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0l2.948 5.955 6.564.955-4.756 4.635 1.122 6.545z" opacity="0.5" />
+            <path d="M10 0v15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0z" fill="currentColor" opacity="0.5" />
+          </svg>
+        )}
+        {[...Array(emptyStars)].map((_, i) => (
+          <svg key={`empty-${i}`} className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.564-.955L10 0l2.948 5.955 6.564.955-4.756 4.635 1.122 6.545z" />
+          </svg>
+        ))}
+      </>
+    );
   };
 
   return (
@@ -253,6 +325,11 @@ const PetaSebaranSPBU = () => {
                   <div className="flex items-center gap-4">
                     <img src="/Logo Pertamina.webp" width={50} />
                     <p className="text-md font-medium text-gray-900 dark:text-white mb-4">{selectedSPBU.name}</p>
+                  </div>
+                  <div id="ratings-overview" className="flex items-center gap-1 mt-3">
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{averageRating.toFixed(1)}</span>
+                    <div className="flex items-center">{renderStars(averageRating)}</div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">({numberOfReviews} reviews)</span>
                   </div>
                   <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
                     <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
@@ -350,7 +427,13 @@ const PetaSebaranSPBU = () => {
                         Navigasi ke SPBU
                       </button>
                     </div>
-                    <div className={`py-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "dashboard" ? "" : "hidden"}`} id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                    <div
+                      className={`py-4 rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "dashboard" ? "" : "hidden"}`}
+                      id="dashboard"
+                      role="tabpanel"
+                      aria-labelledby="dashboard-tab"
+                      style={{ maxHeight: "260px", overflowY: "auto" }}
+                    >
                       <div className="text-center">
                         <button
                           type="button"
@@ -375,7 +458,7 @@ const PetaSebaranSPBU = () => {
                                   </div>
                                   <div className="font-medium dark:text-white">
                                     <div>{review.user.name}</div>
-                                    <div className="text-sm text-gray-500 dark:text-gray-400">{review.createdAt}</div>
+                                    <div className="text-sm text-gray-500 dark:text-gray-400">{formatDate(review.createdAt)}</div>
                                   </div>
                                 </div>
                                 <div className="mt-2">
@@ -393,7 +476,7 @@ const PetaSebaranSPBU = () => {
                             </div>
                           ))
                         ) : (
-                          <p className="text-sm text-gray-500 dark:text-gray-400">No reviews yet.</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 px-4">Belum ada ulasan.</p>
                         )}
                       </div>
                     </div>
