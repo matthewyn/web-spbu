@@ -2,6 +2,8 @@ import express from "express";
 import connectDB from "./config/db.mjs";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.mjs";
+import spbuRoutes from "./routes/spbuRoutes.mjs";
+import ratingRoutes from "./routes/ratingRoutes.mjs"; // Import the new route
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,6 +18,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/spbu", spbuRoutes);
+app.use("/api/ratings", ratingRoutes); // Use the new route
 
 const PORT = process.env.PORT || 5000;
 

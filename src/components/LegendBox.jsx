@@ -22,7 +22,7 @@ const LegendBox = () => {
   ];
 
   return (
-    <div className="legend-box">
+    <div className="legend-box p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <h3 className="legend-title">Detail Fasilitas</h3>
       <ul className="legend-list">
         {facilities.map((facility, index) => (
@@ -38,8 +38,6 @@ const LegendBox = () => {
             position: absolute;
             top: 80px; /* Adjust this value based on the height of your navbar */
             right: 20px;
-            background: white;
-            padding: 10px;
             border-radius: 8px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
