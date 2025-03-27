@@ -22,8 +22,16 @@ export const login = async (req, res) => {
       expiresIn: "1h",
     });
 
-    // Ensure the response includes both the token and the user information
-    res.json({ token, user: { name: user.name, email: user.email } });
+    // Include the _id field in the response
+    res.json({
+      token,
+      user: {
+        _id: user._id, // Add this line
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+      },
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -59,7 +67,16 @@ export const signup = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ token, user: { name: user.name, email: user.email } });
+    // Include the _id field in the response
+    res.json({
+      token,
+      user: {
+        _id: user._id, // Add this line
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+      },
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

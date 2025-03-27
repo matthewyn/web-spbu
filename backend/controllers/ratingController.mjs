@@ -6,6 +6,12 @@ export const addRating = async (req, res) => {
   const userId = req.user.id;
 
   try {
+    // Check if the user has already submitted a review for this SPBU
+    const existingRating = await Rating.findOne({ user: userId, spbu: spbuId });
+    if (existingRating) {
+      return res.status(400).json({ message: "You have already submitted a review for this SPBU." });
+    }
+
     const newRating = new Rating({
       user: userId,
       spbu: spbuId,
@@ -33,10 +39,10 @@ export const getRatings = async (req, res) => {
   const { spbuId } = req.params;
 
   try {
-    const ratings = await Rating.find({ spbu: spbuId }).populate("user", "name");
+    const ratings = await Rating.find({ spbu: spbuId }).populate("user", "name _id");
     res.json(ratings);
   } catch (err) {
-    console.error(err.message);
+    console.error("Error fetching ratings:", err);
     res.status(500).send("Server error");
   }
 };

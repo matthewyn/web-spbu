@@ -27,6 +27,7 @@ const PetaSebaranSPBU = () => {
   const [reviews, setReviews] = useState([]);
   const [averageRating, setAverageRating] = useState(0);
   const [numberOfReviews, setNumberOfReviews] = useState(0);
+  const [hasReviewed, setHasReviewed] = useState(false);
 
   const facilityOptions = [
     { value: "toilet_umum", label: "Toilet Umum" },
@@ -45,8 +46,6 @@ const PetaSebaranSPBU = () => {
     { value: "PLTS", label: "PLTS" },
     { value: "penjualan_produk_pertamina", label: "Penjualan Produk Pertamina" },
   ];
-
-  console.log(averageRating);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -229,7 +228,16 @@ const PetaSebaranSPBU = () => {
   const fetchReviews = async (spbuId) => {
     try {
       const response = await axios.get(`/api/ratings/${spbuId}`);
+      console.log("Fetched reviews:", response.data); // Debugging line
       setReviews(response.data);
+
+      // Check if the logged-in user has already submitted a review
+      if (user && user._id) {
+        const userReview = response.data.find((review) => String(review.user._id) === String(user._id));
+        setHasReviewed(!!userReview);
+      } else {
+        setHasReviewed(false);
+      }
     } catch (err) {
       console.error("Error fetching reviews:", err);
     }
@@ -434,15 +442,39 @@ const PetaSebaranSPBU = () => {
                       aria-labelledby="dashboard-tab"
                       style={{ maxHeight: "260px", overflowY: "auto" }}
                     >
+                      <div id="ratings-statistic" className="grid grid-cols-4 items-center mb-3">
+                        <div className="flex flex-col gap-2 px-4 col-span-3">
+                          {[5, 4, 3, 2, 1].map((star) => {
+                            const starCount = reviews.filter((review) => review.rating === star).length;
+                            const percentage = numberOfReviews > 0 ? (starCount / numberOfReviews) * 100 : 0;
+
+                            return (
+                              <div key={star} className="flex items-center gap-4">
+                                <span className="text-sm text-gray-500 dark:text-gray-400">{star}</span>
+                                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                  <div className="bg-yellow-300 h-2.5 rounded-full" style={{ width: `${percentage}%` }}></div>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="text-center">
+                          <h2 className="text-4xl font-semibold text-gray-900 dark:text-white mb-2">{averageRating.toFixed(1)}</h2>
+                          <div className="flex items-center">{renderStars(averageRating)}</div>
+                          <span className="text-xs text-gray-500 dark:text-gray-400">{numberOfReviews} reviews</span>
+                        </div>
+                      </div>
                       <div className="text-center">
-                        <button
-                          type="button"
-                          class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center gap-1"
-                          onClick={() => setShowTabs(false)}
-                        >
-                          <HiOutlinePencil color="#1a56db" size={16} />
-                          Tulis review
-                        </button>
+                        {!hasReviewed ? (
+                          <button
+                            type="button"
+                            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center gap-1"
+                            onClick={() => setShowTabs(false)}
+                          >
+                            <HiOutlinePencil color="#1a56db" size={16} />
+                            Tulis review
+                          </button>
+                        ) : null}
                       </div>
                       <hr className="mt-2 mb-4" />
                       <div id="reviews">
@@ -493,50 +525,55 @@ const PetaSebaranSPBU = () => {
                     </div>
                     <div class="font-medium dark:text-white">
                       <div>{user.name}</div>
-                      <div class="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+                      <div class="text-sm text-gray-500 dark:text-gray-400">{user.createdAt ? `Joined in ${new Date(user.createdAt).toLocaleString("en-US", { year: "numeric" })}` : "Join date unavailable"}</div>
                     </div>
                   </div>
-                  <form onSubmit={handleSubmit}>
-                    <div class="flex items-center justify-center my-4" id="ratings">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <svg
-                          key={star}
-                          className={`w-6 h-6 ${selectedRating >= star ? "text-yellow-300" : "text-gray-300"} ms-1`}
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="currentColor"
-                          viewBox="0 0 22 20"
-                          onClick={() => handleRatingClick(star)}
-                          style={{ cursor: "pointer" }}
+                  {!hasReviewed ? (
+                    <form onSubmit={handleSubmit}>
+                      <div className="flex items-center justify-center my-4" id="ratings">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <svg
+                            key={star}
+                            className={`w-6 h-6 ${selectedRating >= star ? "text-yellow-300" : "text-gray-300"} ms-1`}
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="currentColor"
+                            viewBox="0 0 22 20"
+                            onClick={() => handleRatingClick(star)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                          </svg>
+                        ))}
+                      </div>
+                      <textarea
+                        id="review"
+                        name="review"
+                        rows="4"
+                        className="mt-1 block w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Tulis review Anda di sini..."
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                      ></textarea>
+                      <div className="mt-8 flex justify-end">
+                        <button
+                          type="button"
+                          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                          onClick={() => setSelectedSPBU(null)} // Close the modal
                         >
-                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                        </svg>
-                      ))}
-                    </div>
-                    <textarea
-                      id="review"
-                      name="review"
-                      rows="4"
-                      className="mt-1 block w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Tulis review Anda di sini..."
-                      value={review}
-                      onChange={(e) => setReview(e.target.value)}
-                    ></textarea>
-                    <div className="mt-8 flex justify-end">
-                      <button
-                        type="button"
-                        class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="submit"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                      >
-                        Post
-                      </button>
-                    </div>
-                  </form>
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Post
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    <p className="text-sm text-gray-500 dark:text-gray-400">You have already submitted a review for this SPBU.</p>
+                  )}
                 </>
               )}
             </div>
@@ -596,11 +633,7 @@ const PetaSebaranSPBU = () => {
             position: absolute;
             top: 10px;
             right: 15px;
-            border: none;
-            background: transparent;
-            font-size: 20px;
             cursor: pointer;
-            color: #555;
           }
           .hero-image {
             width: 100%;
@@ -610,22 +643,12 @@ const PetaSebaranSPBU = () => {
           .modal-body {
             padding: 20px;
           }
-          .facilities-card {
-            background-color: #fecaca; /* bright red-200 */
-            padding: 10px;
-            border-radius: 8px;
-          }
           .facilities-list {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             padding: 0;
             list-style: none;
-          }
-          .facility-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
           }
         `}
       </style>

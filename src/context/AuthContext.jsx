@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     if (token && userInfo) {
       try {
         setIsAuthenticated(true);
-        setUser(JSON.parse(userInfo));
+        setUser(JSON.parse(userInfo)); // Ensure profileImage is included
       } catch (error) {
         console.error("Error parsing user info from local storage:", error);
         localStorage.removeItem("user");
@@ -24,11 +24,10 @@ const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await axios.post("/api/auth/login", { email, password });
-      console.log("Login response:", response.data); // Add this line for debugging
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("user", JSON.stringify(response.data.user)); // Ensure profileImage is included
       setIsAuthenticated(true);
-      setUser(response.data.user);
+      setUser(response.data.user); // Ensure profileImage is included here
     } catch (error) {
       console.error("Login error:", error);
     }
@@ -41,7 +40,24 @@ const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  return <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>{children}</AuthContext.Provider>;
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axios.get("/api/users/profile", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      const updatedUser = {
+        ...response.data,
+      };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser)); // Update localStorage with profileImage
+    } catch (error) {
+      console.error("Error fetching user profile:", error);
+    }
+  };
+
+  return <AuthContext.Provider value={{ isAuthenticated, user, setUser, login, logout, fetchUserProfile }}>{children}</AuthContext.Provider>;
 };
 
 export { AuthContext, AuthProvider };
