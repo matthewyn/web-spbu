@@ -135,7 +135,7 @@ const Settings = () => {
 
         <main className="flex-1 p-4">
           <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Edit profile</h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Edit profil</h2>
             <form id="update-profile-form" onSubmit={handleFormSubmit}>
               <div className="grid grid-cols-5 gap-6 mt-6">
                 <div className="text-center">
@@ -150,7 +150,7 @@ const Settings = () => {
                   )}
                   <form id="upload-photo-form" className="mt-4">
                     <label htmlFor="profileImage" className="text-sm underline text-gray-500 dark:text-gray-400 cursor-pointer">
-                      Change profile image
+                      Ubah profil
                     </label>
                     <input type="file" id="profileImage" className="hidden" accept="image/*" onChange={handleFileChange} />
                   </form>

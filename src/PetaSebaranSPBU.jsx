@@ -384,18 +384,48 @@ const PetaSebaranSPBU = () => {
                         </span>
                         {distance && <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-3.5 py-1.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">{distance}</span>}
                       </div>
-                      <div className="grid grid-cols-3 gap-2 mt-6">
-                        <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                          <img src="/DexLite.png" width={150} />
-                          <p className="text-xs text-center mt-1">Rp 14.300</p>
+                      <div className="grid grid-cols-3 gap-2 mt-6" id="fuel-prices">
+                        <div className="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/DexLite.png" className="mx-auto h-12 object-contain" alt="DexLite" /> {/* Use object-contain */}
+                            <p className="text-xs text-center mt-1">Rp 14.300</p>
+                          </div>
                         </div>
                         <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                          <img src="/DexLite.png" width={150} />
-                          <p className="text-xs text-center mt-1">Rp 14.300</p>
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertamina Dex.png" alt="Pertamina Dex" className="mx-auto" />
+                            <p className="text-xs text-center mt-1">Rp 14.600</p>
+                          </div>
                         </div>
                         <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                          <img src="/DexLite.png" width={150} />
-                          <p className="text-xs text-center mt-1">Rp 14.300</p>
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertamina Bio Solar.jpg" className="mx-auto h-4" alt="Pertamina Bio Solar" />
+                            <p className="text-xs text-center mt-1">Rp 6.800</p>
+                          </div>
+                        </div>
+                        <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertamax Turbo.png" className="mx-auto" alt="Pertamax Turbo" />
+                            <p className="text-xs text-center mt-1">Rp 14.000</p>
+                          </div>
+                        </div>
+                        <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertamax Green 95.jpg" className="mx-auto h-4" alt="Pertamax Green 95" />
+                            <p className="text-xs text-center mt-1">Rp 13.700</p>
+                          </div>
+                        </div>
+                        <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertamax.jpg" className="mx-auto" alt="Pertamax" />
+                            <p className="text-xs text-center mt-1">Rp 12.900</p>
+                          </div>
+                        </div>
+                        <div class="block max-w-sm py-1 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                          <div className="flex flex-col items-center justify-between h-10"> {/* Add a fixed height */}
+                            <img src="/Pertalite.jpg" className="mx-auto" alt="Pertamax" />
+                            <p className="text-xs text-center mt-1">Rp 10.000</p>
+                          </div>
                         </div>
                       </div>
                       <div className="block max-w-sm p-4 my-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
