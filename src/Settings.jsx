@@ -78,7 +78,6 @@ const Settings = () => {
         }
       )
       .then((response) => {
-        console.log("Profile terupdate:", response.data);
         toast.success("Profile terupdate!"); // Show success toast
 
         // Update the user in AuthContext

@@ -15,6 +15,10 @@ const authMiddleware = async (req, res, next) => {
     req.user = await User.findById(decoded.id).select("-password"); // Populate req.user
     next();
   } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      console.error("JWT expired:", err.message);
+      return res.status(401).json({ message: "Token kadaluwarsa" }); // Send specific error message
+    }
     console.error("Error verifying token:", err.message);
     res.status(401).json({ message: "Token is not valid" });
   }

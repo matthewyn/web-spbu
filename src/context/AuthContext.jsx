@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const AuthContext = createContext();
 
@@ -59,5 +60,19 @@ const AuthProvider = ({ children }) => {
 
   return <AuthContext.Provider value={{ isAuthenticated, user, setUser, login, logout, fetchUserProfile }}>{children}</AuthContext.Provider>;
 };
+
+// Add Axios interceptor
+axios.interceptors.response.use(
+  (response) => response, // Pass through successful responses
+  (error) => {
+    if (error.response && error.response.status === 401 && error.response.data.message === "Token kadaluwarsa") {
+      toast.error("Token kadaluwarsa"); // Show toast notification
+      localStorage.removeItem("token"); // Clear expired token
+      localStorage.removeItem("user"); // Clear user data
+      window.location.href = "/login"; // Redirect to login page
+    }
+    return Promise.reject(error);
+  }
+);
 
 export { AuthContext, AuthProvider };

@@ -28,6 +28,8 @@ const PetaSebaranSPBU = () => {
   const [averageRating, setAverageRating] = useState(0);
   const [numberOfReviews, setNumberOfReviews] = useState(0);
   const [hasReviewed, setHasReviewed] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageRotationInterval, setImageRotationInterval] = useState(null);
 
   const facilityOptions = [
     { value: "toilet_umum", label: "Toilet Umum" },
@@ -69,14 +71,16 @@ const PetaSebaranSPBU = () => {
       attribution: "&copy; OpenStreetMap contributors",
     }).addTo(map);
 
-    const redIcon = L.icon({
-      iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-      iconSize: [25, 41],
-      iconAnchor: [12, 41],
-      popupAnchor: [1, -34],
-      shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-      shadowSize: [41, 41],
-    });
+    const createCustomIcon = (color) => {
+      return L.icon({
+        iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+        shadowSize: [41, 41],
+      });
+    };
 
     const filteredSPBU = spbuData.filter((spbu) => {
       if (filter !== "All" && spbu.type !== filter) return false;
@@ -86,9 +90,19 @@ const PetaSebaranSPBU = () => {
     });
 
     filteredSPBU.forEach((spbu) => {
+      let markerColor;
+      if (spbu.averageRating > 4) {
+        markerColor = "gold";
+      } else if (spbu.averageRating >= 2 && spbu.averageRating <= 4) {
+        markerColor = "green";
+      } else {
+        markerColor = "red";
+      }
+
       const marker = L.marker([spbu.latitude / 1e6, spbu.longitude / 1e6], {
-        icon: redIcon,
+        icon: createCustomIcon(markerColor),
       }).addTo(map);
+
       marker.on("click", () => {
         setSelectedSPBU(spbu);
         if (userLocation) {
@@ -204,7 +218,6 @@ const PetaSebaranSPBU = () => {
           },
         }
       );
-      console.log("Rating submitted:", response.data);
 
       // Fetch the updated reviews
       await fetchReviews(selectedSPBU._id);
@@ -228,7 +241,6 @@ const PetaSebaranSPBU = () => {
   const fetchReviews = async (spbuId) => {
     try {
       const response = await axios.get(`/api/ratings/${spbuId}`);
-      console.log("Fetched reviews:", response.data); // Debugging line
       setReviews(response.data);
 
       // Check if the logged-in user has already submitted a review
@@ -295,6 +307,47 @@ const PetaSebaranSPBU = () => {
     );
   };
 
+  useEffect(() => {
+    if (selectedSPBU) {
+      // Clear any existing interval when a new SPBU is selected
+      clearInterval(imageRotationInterval);
+  
+      // Calculate the starting image index based on the SPBU's position in the array
+      const spbuIndex = spbuData.findIndex((spbu) => spbu._id === selectedSPBU._id);
+      const startImageIndex = spbuIndex * 5 + 1;
+  
+      // Reset the current image index
+      setCurrentImageIndex(0);
+  
+      // Start a new interval for rotating images
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % 5); // Rotate through 5 images
+      }, 3000); // Change image every 3 seconds
+  
+      setImageRotationInterval(interval);
+  
+      // Cleanup interval when the component unmounts or SPBU changes
+      return () => clearInterval(interval);
+    }
+  }, [selectedSPBU]);
+  
+  const getHeroImage = () => {
+    if (!selectedSPBU) return null;
+  
+    // Determine the starting image index based on the SPBU's position in the array
+    const spbuIndex = spbuData.findIndex((spbu) => spbu._id === selectedSPBU._id);
+    const startImageIndex = spbuIndex * 5 + 1;
+  
+    // Calculate the current image file name
+    const currentImageFile = startImageIndex + currentImageIndex;
+  
+    // Reset to the first set of images (1–5) if the range exceeds the total number of images
+    const totalImages = 35; // Assuming there are 35 images in total
+    const normalizedImageFile = ((currentImageFile - 1) % totalImages) + 1;
+  
+    return `/public/${normalizedImageFile}.jpg`;
+  };
+
   return (
     <div>
       {/* Floating Filters */}
@@ -323,7 +376,7 @@ const PetaSebaranSPBU = () => {
                 <button className="close-btn" onClick={() => setSelectedSPBU(null)}>
                   <HiOutlineX size={24} color="#1a56db" />
                 </button>
-                <img src="/spbu.jpg" alt="SPBU" className="hero-image rounded-t-lg" />
+                <img src={getHeroImage()} alt="SPBU" className="hero-image rounded-t-lg" />
               </>
             )}
             <div className="modal-body">
